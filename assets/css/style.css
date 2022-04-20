@@ -1,0 +1,6 @@
+#edge-border {
+   border-right: solid 1px black;
+   margin-top: 12px;
+   height: 100%;
+   overflow: auto;
+}
