@@ -12,28 +12,30 @@
     <section class="hero is-success">
     <div class="columns navbar level block container.is-widescreen hero-body">
     <div class="search-bar column is-one-quartar ">
-        <h1>Search<input class="search" placeholder="search your facorite artist"></input></h1>
+        <h1 id="search-text">Search<input class="search" placeholder="search your favorite artist"></input></h1>
+        <button onclick="redirection()" class="login button is-link">Login</button>
     </div>
     </div>
     </section>
     <div class="columns">
         <div class="now-playing column is-one-quartar" id="edge-border">
             <h1>Now playing</h1>
+            <img src="./assets/generic-image-placeholder.png" alt="" image is-64x64>
         </div>
         <div class="artist-songs column is-one-quartar" id="edge-border">
             <h1>artists/songs</h1>
         </div>
-        <div class="column navbar-end is-one-quartar block card" id="edge-border">
-            <header class="card-header">
-               <p class="card-header-tittle">Navigation bar</p>
-               <button class="card-header-icon" aria-label="more options">
-                <span class="icon">
+        <div class="dropdown is-active is-one-quarter column" id="edge-border">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Dropdown button</span>
+                <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </span>
               </button>
-            </header>
-        </div>
-        </div>
+            </div>
+          </div>
+        
     <script src="./assets/js/logic.js"></script>
 </body>
 </html>
