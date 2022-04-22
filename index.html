@@ -12,8 +12,10 @@
     <section class="hero is-success">
     <div class="columns navbar level block container.is-widescreen hero-body">
     <div class="search-bar column is-one-quartar ">
-        <h1 id="search-text">Search<input class="search" placeholder="search your favorite artist"></input></h1>
-        <button onclick="getArtistInfo()" class="login button is-link">Login</button>
+      <form id="artist-search">
+        <input type="text" id="search-text" placeholder="search your favorite artist name" name="q"><span class="search"></span></input></h1>
+        <button class="login button is-link" type="submit">Submit</button>
+      </form>
     </div>
     </div>
     </section>
