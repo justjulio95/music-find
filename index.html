@@ -9,26 +9,29 @@
     <title>Music find</title>
 </head>
 <body>
+  <!--making a hero for the search bar and adding columns. id's and classes were added for css.-->
     <section class="hero is-success">
     <div class="columns navbar level block container.is-widescreen hero-body">
-    <div class="search-bar column is-one-quartar ">
-        <h1 id="search-text">Search<input class="search" placeholder="search your favorite artist"></input></h1>
-        <button onclick="redirection()" class="login button is-link">Login</button>
+    <div class="search-bar column is-one-quarta">
+        <h1 id="search-text">Search<input class="search" placeholder="search your favorite artist" id="shadow-box"></input></h1>
+        <button onclick="redirection()" class="login button is-link" id="shadow-box">Login</button>
     </div>
     </div>
     </section>
+    <!--number of columns = 3 at one quarter of the maximum space each and a placeholder image to be replaced by the cover art.-->
     <div class="columns">
         <div class="now-playing column is-one-quartar" id="edge-border">
             <h1>Now playing</h1>
-            <img src="./assets/generic-image-placeholder.png" alt="" image is-64x64>
+            <img src="./assets/generic-image-placeholder.png" alt="" image is-64x64 id="shadow-box">
         </div>
         <div class="artist-songs column is-one-quartar" id="edge-border">
             <h1>artists/songs</h1>
         </div>
+        <!--a dropdown for the navigation bar to see more elements.-->
         <div class="dropdown is-active is-one-quarter column" id="edge-border">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span>Dropdown button</span>
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" id="shadow-box">
+                <span>Navigation button</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </span>
