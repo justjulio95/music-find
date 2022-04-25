@@ -1,15 +1,20 @@
 //LASTFM
-var apikey = "f64fb3ab0039c0d8c7bf10bda969375a"
+var apikey = "f64fb3ab0039c0d8c7bf10bda969375a";
 //TICKETMASTER
-var tmKey = "dKQgmsljqJ06ivAP6t7T3fm9pOx5TPed"
+var tmKey = "dKQgmsljqJ06ivAP6t7T3fm9pOx5TPed";
 //var artistSearch = document.getElementById("search-text")
 
+//Past Searches Col element
+var pastSearchesEl = document.querySelector(".past-searches")
 //Artist Name Col element
-var artistInfoEl = document.querySelector(".artist-info")
+var artistInfoEl = document.querySelector(".artist-info");
 //Artist Albums Col element
-var topAlbumsEl = document.querySelector(".artist-albums")
+var topAlbumsEl = document.querySelector(".artist-albums");
 //Artist Tours Col El
-var artistToursEl = document.querySelector(".artist-tours")
+var artistToursEl = document.querySelector(".artist-tours");
+
+//make an array to handle the new searches that happen
+var searchedArtists = [];
 
 //ensures that the user entered something into the search field
 var formHandler = function(event) {
@@ -37,6 +42,7 @@ function getArtistInfo(artist) {
         if (response.ok) {
         response.json().then(function(data) {
             displayArtistInfo(data)
+            createButton(data.artist.name)
             getTopAlbums(data.artist.name)
         });
         } else {
@@ -122,7 +128,7 @@ function displayAlbumInfo(topAlbums) {
         albumCard.appendChild(albumName);
 
         //get the album image to the screen
-        var albumImg = albums[i].image[3]["#text"]
+        var albumImg = albums[i].image[2]["#text"]
 
         var albumImgDisplay = document.createElement("img")
         albumImgDisplay.setAttribute("class", "card-image has-image-centered p-2")
@@ -140,7 +146,7 @@ function getTourInfo(artist) {
     fetch(ticketmasterUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
-                displayTourInfo(data)
+                displayTourInfo(data, artist)
             })
         }
         else {
@@ -158,19 +164,67 @@ function getTourInfo(artist) {
     })
 }
 
-function displayTourInfo(data) {
+function displayTourInfo(data, artist) {
     artistToursEl.textContent = ''
 
     var name = data._embedded.attractions[0].name
     var tourLink = data._embedded.attractions[0].url
 
-    var tourInfo = document.createElement("h1")
-    tourInfo.textContent = "Want to experience " + name + " live?"
-    artistToursEl.appendChild(tourInfo)
+    if(name === artist){
+        var tourInfo = document.createElement("h1")
+        tourInfo.textContent = "Want to experience " + name + " live?"
+        artistToursEl.appendChild(tourInfo)
 
-    var tourHyperLink = document.createElement("p")
-    tourHyperLink.innerHTML = "Click the link <a href='" + tourLink + "'> HERE</a> to see if they're coming to a town near you!"
-    artistToursEl.appendChild(tourHyperLink)
+        var tourHyperLink = document.createElement("p")
+        tourHyperLink.innerHTML = "Click the link <a href='" + tourLink + "'> HERE</a> to see if they're coming to a town near you!"
+        artistToursEl.appendChild(tourHyperLink)
+    }
+    else {
+        var noTours = document.createElement("h1");
+        noTours.textContent = "Sorry. This artist doesn't seem to have any events coming up."
+        artistToursEl.appendChild(noTours)
+    }
+}
+
+function createButton(artist) {
+    //let's create buttons to search for past artists
+    var recentSearches = document.createElement("button")
+    recentSearches.setAttribute("class", "button is-dark are-large")
+    recentSearches.setAttribute("id", "history")
+    recentSearches.textContent = artist
+
+    //Ensure that no one artist is searched up more than once.
+    if(!searchedArtists.includes(recentSearches.textContent)){
+        searchedArtists.push(recentSearches.textContent)
+        pastSearchesEl.appendChild(recentSearches);
+        saveSearch()
+    }
+}
+
+function saveSearch() {
+    localStorage.setItem("artists", JSON.stringify(searchedArtists));
+}
+
+function loadSearch() {
+    var searchHistory = localStorage.getItem("artists");
+
+    if(!searchHistory){
+        return false;
+    }
+    else {
+        searchHistory = JSON.parse(searchHistory)
+        for(var i = 0; i < searchHistory.length; i++){
+            createButton(searchHistory[i])
+        }
+    }
 }
 
 $("#search-btn").on("click", formHandler)
+
+$(".past-searches").on("click", "button", function() {
+    var priorSearch = $(this).text()
+    getArtistInfo(priorSearch)
+    getTourInfo(priorSearch)
+})
+
+loadSearch();
