@@ -6,10 +6,15 @@
 ``
 
 ## Technologies
-- HTML
-- CSS
-- Bulma
-- JS
+* API’s
+    * LastFM
+    * Ticketmaster
+* Bulma CSS Framework
+* jQuery
+* JavaScript
+* HTML
+* CSS
+
 
 
 ## Deployments
