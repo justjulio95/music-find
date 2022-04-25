@@ -41,6 +41,10 @@ function getArtistInfo(artist) {
         });
         } else {
             // alert that the artist is not found
+            var noArtist = document.createElement("h1")
+            noArtist.setAttribute("class", "subtitle is-3")
+            noArtist.textContent = "Sorry. We don't seem to have any information on them."
+            artistInfoEl.appendChild(noArtist)
         }
     })
     .catch(function(error){
@@ -55,6 +59,7 @@ function displayArtistInfo(data) {
 
     //create name display dynamically dynamically
     var name = document.createElement("h2")
+    name.setAttribute("class", "subtitle is-1 has-text-centered")
     name.textContent = data.artist.name;
     artistInfoEl.appendChild(name);
     
@@ -62,15 +67,17 @@ function displayArtistInfo(data) {
     var artistImg = data.artist.image[2]["#text"]
 
     var artistImgDisplay = document.createElement("img");
+    artistImgDisplay.setAttribute("class", "center-artist")
     artistImgDisplay.setAttribute("src", artistImg)
     artistImgDisplay.setAttribute("alt", "placeholder image of searched artist")
     artistInfoEl.appendChild(artistImgDisplay)
     
     //generate summary info dynamically
     var summary = document.createElement("p")
-    summary.textContent = data.artist.bio.summary
+    summary.setAttribute("class", "has-text-centered")
+    // neat trick here to take out the LASTFM hyperlink that they embed into their artist summaries
+    summary.textContent = data.artist.bio.summary.split("<a")[0]
     artistInfoEl.appendChild(summary)
-    //console.log(summary)
 }
 
 function getTopAlbums(artistName) {
@@ -85,6 +92,10 @@ function getTopAlbums(artistName) {
         }
         else {
             //alert that albums are not found
+            var noAlbum = document.createElement("h1")
+            noAlbum.setAttribute("class", "subtitle is-3")
+            noAlbum.textContent = "Sorry. We don't seem to have any information on their albums."
+            artistInfoEl.appendChild(noAlbum)
         }
     })
     .catch(function(error){
@@ -95,25 +106,31 @@ function getTopAlbums(artistName) {
 }
 
 function displayAlbumInfo(topAlbums) {
-    console.log(topAlbums)
-
     topAlbumsEl.textContent = ''
 
     var albums = topAlbums.album
     //iterate through the array of albums to get the info we need. 
     for(var i = 0; i < albums.length; i++){
+        //create a card for display purposes
+        var albumCard = document.createElement("div");
+        albumCard.setAttribute("class", "card m-3");
+
         //get the album name to the screen
-        var albumName = document.createElement("h2")
-        albumName.textContent = albums[i].name
-        topAlbumsEl.appendChild(albumName);
+        var albumName = document.createElement("h2");
+        albumName.setAttribute("class", "card-header-title is-centered");
+        albumName.textContent = albums[i].name;
+        albumCard.appendChild(albumName);
 
         //get the album image to the screen
         var albumImg = albums[i].image[3]["#text"]
 
         var albumImgDisplay = document.createElement("img")
+        albumImgDisplay.setAttribute("class", "card-image has-image-centered p-2")
         albumImgDisplay.setAttribute("src", albumImg)
         albumImgDisplay.setAttribute("alt", "placeholder image of searched artist album")
-        topAlbumsEl.appendChild(albumImgDisplay)
+        albumCard.appendChild(albumImgDisplay);
+
+        topAlbumsEl.appendChild(albumCard);
     }
 }
 
@@ -128,6 +145,10 @@ function getTourInfo(artist) {
         }
         else {
             //alert there are no tickets related to the searched artist
+            var noTickets = document.createElement("h1")
+            noTickets.setAttribute("class", "subtitle is-3")
+            noTickets.textContent = "Sorry. There doesn't seem to be any events with this artist."
+            artistInfoEl.appendChild(noATickets)
         }
     })
     .catch(function(error){
@@ -150,9 +171,6 @@ function displayTourInfo(data) {
     var tourHyperLink = document.createElement("p")
     tourHyperLink.innerHTML = "Click the link <a href='" + tourLink + "'> HERE</a> to see if they're coming to a town near you!"
     artistToursEl.appendChild(tourHyperLink)
-    
-
 }
 
 $("#search-btn").on("click", formHandler)
-    
