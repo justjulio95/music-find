@@ -18,4 +18,4 @@
 
 
 ## Deployments
-[Music Find](https;//add here url of deployments)
+[Music Find](https://justjulio95.github.io/music-find/)
