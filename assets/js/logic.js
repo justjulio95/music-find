@@ -63,27 +63,33 @@ function getArtistInfo(artist) {
 function displayArtistInfo(data) {
     artistInfoEl.textContent = ''
 
+    //create a card for the artists info
+    var artistBio = document.createElement("div")
+    artistBio.setAttribute("class", "card m-3")
+
     //create name display dynamically dynamically
     var name = document.createElement("h2")
-    name.setAttribute("class", "subtitle is-1 has-text-centered")
+    name.setAttribute("class", "card-header-title is-centered")
     name.textContent = data.artist.name;
-    artistInfoEl.appendChild(name);
+    artistBio.appendChild(name);
     
     //generate image of them dynamically
     var artistImg = data.artist.image[2]["#text"]
 
     var artistImgDisplay = document.createElement("img");
-    artistImgDisplay.setAttribute("class", "center-artist")
+    artistImgDisplay.setAttribute("class", "card-image has-image-centered")
     artistImgDisplay.setAttribute("src", artistImg)
     artistImgDisplay.setAttribute("alt", "placeholder image of searched artist")
-    artistInfoEl.appendChild(artistImgDisplay)
+    artistBio.appendChild(artistImgDisplay)
     
     //generate summary info dynamically
     var summary = document.createElement("p")
-    summary.setAttribute("class", "has-text-centered")
+    summary.setAttribute("class", "card-content")
     // neat trick here to take out the LASTFM hyperlink that they embed into their artist summaries
     summary.textContent = data.artist.bio.summary.split("<a")[0]
-    artistInfoEl.appendChild(summary)
+    artistBio.appendChild(summary)
+
+    artistInfoEl.appendChild(artistBio)
 }
 
 function getTopAlbums(artistName) {
@@ -172,10 +178,12 @@ function displayTourInfo(data, artist) {
 
     if(name === artist){
         var tourInfo = document.createElement("h1")
+        tourInfo.setAttribute("class", "subtitle is-2 has-text-centered")
         tourInfo.textContent = "Want to experience " + name + " live?"
         artistToursEl.appendChild(tourInfo)
 
         var tourHyperLink = document.createElement("p")
+        tourHyperLink.setAttribute("class", "has-text-centered")
         tourHyperLink.innerHTML = "Click the link <a href='" + tourLink + "'> HERE</a> to see if they're coming to a town near you!"
         artistToursEl.appendChild(tourHyperLink)
     }

@@ -2,7 +2,7 @@
 #edge-border {
    border-right: solid 1px black;
    margin-top: 12px;
-   height: 100%;
+   /*height: 100%;*/
    overflow: auto;
    padding-bottom: 100vh;
 }
@@ -26,7 +26,6 @@ body {
    background: rgb(194,52,86);
 background: linear-gradient(39deg, rgba(194,52,86,1) 27%, rgba(116,77,222,1) 54%, rgba(12,211,231,1) 100%);
 }
-
 
 .has-image-centered {
    margin-left: auto;
