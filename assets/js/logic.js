@@ -176,7 +176,7 @@ function displayTourInfo(data, artist) {
         artistToursEl.appendChild(tourInfo)
 
         var tourHyperLink = document.createElement("p")
-        tourHyperLink.innerHTML = "Click the link <a target="_blank" href='" + tourLink + "'> HERE</a> to see if they're coming to a town near you!"
+        tourHyperLink.innerHTML = "Click the link <a href='" + tourLink + "'> HERE</a> to see if they're coming to a town near you!"
         artistToursEl.appendChild(tourHyperLink)
     }
     else {
