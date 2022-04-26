@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music find</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music find</title>
 </head>
+
 <body>
-  <!--making a hero for the search bar and adding columns. id's and classes were added for css.-->
-    <section class="hero is-success">
+  <section class="hero">
+    <header>
+      <h1 class="title is-1 has-text-centered">Music Find</h1>
+      <p class="subtitle is-1 has-text-centered">Your New Obsession Is Our Favorite Topic.</p>
+    </header>
     <div class="columns navbar level block container.is-widescreen hero-body">
-    <div class="search-bar column is-one-quarta">
-        <h1 id="search-text">Search<input class="search" placeholder="search your favorite artist" id="shadow-box"></input></h1>
-        <button onclick="redirection()" class="login button is-link" id="shadow-box">Login</button>
+      <div class="search-bar column is-one-quartar ">
+        <h1 id="search-text">Search</h1>
+        <form>
+          <input class="search" id="artist-search" type="text" autofocus="true" placeholder="search"></input>
+          <button class="login button is-link" id="search-btn" type="submit">Search</button>
+        </form>
+      </div>
     </div>
+  </section>
+
+  <div class="columns">
+    <div class="column is-one-quarter" id="edge-border">
+      <h1 class="title has-text-centered">Past Searches</h1>
+      <div class="past-searches"></div>
     </div>
-    </section>
-    <!--number of columns = 3 at one quarter of the maximum space each and a placeholder image to be replaced by the cover art.-->
-    <div class="columns">
-        <div class="now-playing column is-one-quartar" id="edge-border">
-            <h1>Now playing</h1>
-            <img src="./assets/generic-image-placeholder.png" alt="" image is-64x64 id="shadow-box">
-        </div>
-        <div class="artist-songs column is-one-quartar" id="edge-border">
-            <h1>artists/songs</h1>
-        </div>
-        <!--a dropdown for the navigation bar to see more elements.-->
-        <div class="dropdown is-active is-one-quarter column" id="edge-border">
-            <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" id="shadow-box">
-                <span>Navigation button</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-          </div>
-        
-    <script src="./assets/js/logic.js"></script>
+
+    <div class="column is-one-quartar" id="edge-border">
+      <h1 class="title has-text-centered">Artist Info</h1>
+      <div class="artist-info">
+      </div>
+    </div>
+    <div  class="column is-one-quartar" id="edge-border">
+      <h1 class="title has-text-centered">Top 3 Albums</h1>
+      <div class="artist-albums">
+      </div>
+    </div>
+    <div class="dropdown is-active is-one-quarter column" id="edge-border">
+      <h1 class="title has-text-centered">Tour Link</h1>
+      <div class="artist-tours"></div>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./assets/js/logic.js"></script>
 </body>
 </html>

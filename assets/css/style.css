@@ -18,13 +18,25 @@
 /* background colors and shadow on the navigation */
 body {
    background: rgb(95,213,187);
-background: linear-gradient(156deg, rgba(95,213,187,1) 27%, rgba(162,142,101,1) 54%, rgba(231,70,12,1) 100%);
+   background: linear-gradient(156deg, rgba(95,213,187,1) 27%, 
+   rgba(162,142,101,1) 54%, rgba(231,70,12,1) 100%);
 }
 
 #nav {
    background: rgb(194,52,86);
 background: linear-gradient(39deg, rgba(194,52,86,1) 27%, rgba(116,77,222,1) 54%, rgba(12,211,231,1) 100%);
 }
+
+
+.has-image-centered {
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ .center-artist {
+    margin-left: 5.5rem;
+    margin-bottom: 1rem
+ }
 
 #shadow-box {
    box-shadow: 10px 5px 5px black;
