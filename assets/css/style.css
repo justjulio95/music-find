@@ -1,3 +1,4 @@
+/* sizing columns */
 #edge-border {
    border-right: solid 1px black;
    margin-top: 12px;
@@ -5,7 +6,7 @@
    overflow: auto;
    padding-bottom: 100vh;
 }
-
+/* font styles */
 #search-text, .search {
    font-size: 35px;
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -14,7 +15,7 @@
 .columns {
    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
+/* background colors and shadow on the navigation */
 body {
    background: rgb(95,213,187);
    background: linear-gradient(156deg, rgba(95,213,187,1) 27%, 
@@ -26,6 +27,7 @@ body {
 background: linear-gradient(39deg, rgba(194,52,86,1) 27%, rgba(116,77,222,1) 54%, rgba(12,211,231,1) 100%);
 }
 
+
 .has-image-centered {
    margin-left: auto;
    margin-right: auto;
@@ -35,3 +37,7 @@ background: linear-gradient(39deg, rgba(194,52,86,1) 27%, rgba(116,77,222,1) 54%
     margin-left: 5.5rem;
     margin-bottom: 1rem
  }
+
+#shadow-box {
+   box-shadow: 10px 5px 5px black;
+}
