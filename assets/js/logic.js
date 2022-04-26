@@ -87,7 +87,7 @@ function displayArtistInfo(data) {
 }
 
 function getTopAlbums(artistName) {
-    var albumFetchUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artistName}&limit=3&api_key=${apikey}&format=json`
+    var albumFetchUrl = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artistName}&limit=3&api_key=${apikey}&format=json`
 
     fetch(albumFetchUrl).then(function(response){
         if(response.ok){
