@@ -15,7 +15,8 @@
 * HTML
 * CSS
 
-
+## Preview of Deployed Page
+![Preview of Music-Find](./assets/images/music-find-preview.png)
 
 ## Deployments
 [Music Find](https://justjulio95.github.io/music-find/)
